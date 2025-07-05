@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const PDF_FILE_URL = "./Niklas_Pelli_CV.pdf";
+const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
 function About() {
   const [isFlipped, setIsFlipped] = useState(false);
