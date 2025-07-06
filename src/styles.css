@@ -8,6 +8,8 @@ body {
     margin: 0;
     max-height: 100%;
     font-size: 18px;
+    overflow-x: hidden;
+
     background: linear-gradient(#111111, #292929);
     background-size: cover;
     color: orange;
@@ -372,47 +374,60 @@ img {
     transition-duration: 300ms;
 }
 
+.flip-card-wrapper {
+    width: 100%;
+    /* centrera i gridcellen */
+}
+
 /* Container to hold the card */
 .flip-card-container {
     perspective: 1000px;
-    /* Allows the 3D flip effect */
-    width: 330px;
-    height: 300px;
+    width: 100%;
+    max-width: 700px;
+    /* Begränsa bredden på stora skärmar */
+    height: 250px;
     cursor: pointer;
     flex-direction: column;
     margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    /* Centrera på sidan */
 }
 
-/* Inner wrapper that contains both sides */
 .flip-card-inner {
     width: 100%;
     height: 100%;
+    position: relative;
+
     transform-style: preserve-3d;
-    /* Enable 3D effect */
     transition: transform 0.6s;
-    /* Smooth flip animation */
 }
 
-/* Add flipped state for 180-degree rotation */
 .flip-card-inner.flipped {
     transform: rotateY(180deg);
 }
 
-/* Front and back card faces */
 .flip-card-front,
 .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    /* Hide the reverse side */
-
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    margin: 10px;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    /* 2 rader */
+    grid-auto-flow: column;
+    /* fyll kolumner först */
+    gap: 5px;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    color: white;
-    border-radius: 8px;
 }
+
+
 
 /* Front card styles */
 .flip-card-front {
@@ -423,12 +438,12 @@ img {
 .flip-card-back {
     background: linear-gradient(#080808, #692b02);
     transform: rotateY(180deg);
-    /* Position it to be flipped */
+    padding-right: 20px;
 }
 
 .flip-headline {
     align-items: center;
-    margin-top: 100px;
+    margin-top: 60px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: larger;
     color: orange;
@@ -507,5 +522,36 @@ img {
 
     .glow {
         font-size: 5rem;
+    }
+
+
+}
+
+
+@media screen and (max-width: 600px) {
+    .flip-card-container {
+        height: auto;
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        min-height: 350px;
+        /* eller mer om du behöver utrymme för ikoner */
+    }
+
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        inset: 0;
+        min-height: 350px;
+        /* tvinga höjd */
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 }

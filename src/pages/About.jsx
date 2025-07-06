@@ -85,7 +85,8 @@ function About() {
           <div className="card-img">
             <img src={bild} className="img-fluid" alt="" />
           </div>
-
+        </div>
+        <div className="flip-card-wrapper">
           <div className="flip-card-container" onClick={handleClick}>
             <div className={`flip-card-inner ${isFlipped ? "flipped" : ""}`}>
               <div className="flip-card-front">
@@ -108,6 +109,7 @@ function About() {
                     margin: "10",
                   }}
                 />
+
                 <FontAwesomeIcon
                   icon={faNodeJs}
                   style={{
@@ -147,6 +149,11 @@ function About() {
                     fontSize: "5rem",
                     margin: "10",
                   }}
+                />
+                <img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                  alt="TypeScript"
+                  style={{ width: "5rem", margin: "10px" }}
                 />
               </div>
             </div>
