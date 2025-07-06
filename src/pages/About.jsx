@@ -150,6 +150,14 @@ function About() {
                     margin: "10",
                   }}
                 />
+                {/*   <FontAwesomeIcon
+                  icon={faBootstrap}
+                  style={{
+                    color: "purple",
+                    fontSize: "5rem",
+                    margin: "10",
+                  }}
+                /> */}
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                   alt="TypeScript"
