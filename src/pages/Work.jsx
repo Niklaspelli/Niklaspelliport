@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
-import YouTubeVideo from "../components/YouTubeVideo";
 import "../styles.css";
+import YouTubeVideo from "../components/YoutubeVideo";
 
 export default function Work() {
   const videos = [
@@ -26,7 +26,6 @@ export default function Work() {
     <Container>
       <main className="Work" style={{ color: "orange" }}>
         <h2>My work</h2>
-
         <YouTubeVideo videos={videos} />
       </main>
     </Container>
