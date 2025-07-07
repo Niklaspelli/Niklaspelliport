@@ -198,6 +198,7 @@ footer {
 .video-container {
     position: relative;
     width: 100%;
+    margin-bottom: 100px;
     /* 16:9 aspect ratio (9 / 16 * 100) */
 }
 
