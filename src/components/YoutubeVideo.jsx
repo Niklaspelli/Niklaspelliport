@@ -16,12 +16,15 @@ class YouTubeVideo extends React.Component {
       <div className="video-container">
         {videos.map((video, index) => (
           <div className="video-item" key={index}>
+            <h3 style={{ marginBottom: "2rem" }}>{video.title}</h3>
             <YouTube
               videoId={video.videoId}
               opts={opts}
               onReady={this._onReady}
             />
-            <p className="video-description">{video.description}</p>
+            <p style={{ whiteSpace: "pre-line", marginTop: "1rem" }}>
+              {video.description}
+            </p>
 
             {video.sourceUrl && (
               <p className="video-source">
@@ -38,6 +41,9 @@ class YouTubeVideo extends React.Component {
             )}
 
             {video.showLikeButton && <LikeButton />}
+            <div
+              style={{ borderTop: "1px solid #ffa500", margin: "20px 0" }}
+            ></div>
           </div>
         ))}
       </div>

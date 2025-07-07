@@ -12,7 +12,7 @@ body {
 
     background: linear-gradient(#111111, #292929);
     background-size: cover;
-    color: orange;
+    color: #ffa500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -199,7 +199,6 @@ footer {
     position: relative;
     width: 100%;
     margin-bottom: 100px;
-    /* 16:9 aspect ratio (9 / 16 * 100) */
 }
 
 .video-container iframe {
