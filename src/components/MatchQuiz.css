@@ -1,0 +1,135 @@
+/* MatchQuiz.css */
+
+/* Huvudcontainern för hela quizet */
+.quiz-container {
+    background-color: #1a1a1a;
+    /* Mörk bakgrund för kontrast */
+    border: 2px solid #ff8c00;
+    /* Mörkare orange border */
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    /* Centrerad på sidan */
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+    /* Mjuk orange glöd */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    /* Vit text som standard */
+    transition: all 0.3s ease;
+}
+
+/* Rubriken "Match-O-Meter" */
+.quiz-container h3 {
+    color: #ffa500;
+    /* Klar orange */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Texten "Fråga X av Y" */
+.quiz-container p {
+    color: #ccc;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Själva frågetexten */
+.quiz-container h4 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+/* Containern för svarsalternativen (knapparna) */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Mellanrum mellan knapparna */
+}
+
+/* Styling för svarsknapparna (vi använder .btn-outline-warning från Bootstrap, men lägger på egen styling) */
+.quiz-container .btn-outline-warning {
+    border-color: #ffa500;
+    color: #ffa500;
+    background-color: transparent;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    text-align: left;
+    /* Vänsterjusterad text i knappen */
+    padding-left: 25px;
+    position: relative;
+}
+
+/* Hover-effekt för knapparna */
+.quiz-container .btn-outline-warning:hover {
+    background-color: rgba(255, 165, 0, 0.1);
+    /* Subtil orange bakgrund */
+    border-color: #ff8c00;
+    color: #fff;
+    transform: translateY(-2px);
+    /* Lite lyft */
+    box-shadow: 0 5px 10px rgba(255, 140, 0, 0.3);
+    /* Skarpare glöd vid hover */
+}
+
+/* Klick-effekt */
+.quiz-container .btn-outline-warning:active {
+    transform: translateY(1px);
+}
+
+/* Styling för resultatsidan */
+.result-container {
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Själva procentsiffran */
+.result-percent {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #ffa500;
+    margin: 20px 0;
+    text-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
+    /* Kraftig glöd */
+    font-family: 'Courier New', Courier, monospace;
+    /* Lite "kod"-känsla */
+}
+
+/* Resultattexten */
+.result-text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+/* "Gör om"-knappen (btn-warning) */
+.quiz-container .btn-warning {
+    background-color: #ffa500;
+    border-color: #ffa500;
+    color: #1a1a1a;
+    /* Mörk text på orange knapp */
+    padding: 12px 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    /* Runda hörn */
+    transition: all 0.2s ease;
+}
+
+.quiz-container .btn-warning:hover {
+    background-color: #ff8c00;
+    border-color: #ff8c00;
+    transform: scale(1.05);
+    /* Lite förstoring */
+}

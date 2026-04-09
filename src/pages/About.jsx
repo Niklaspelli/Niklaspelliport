@@ -12,6 +12,7 @@ import {
   faBootstrap,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MatchQuiz from "../components/MatchQuiz";
 
 const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
@@ -166,6 +167,10 @@ function About() {
               </div>
             </div>
           </div>
+        </div>
+        <div style={{ padding: "20px", marginBottom: "40px" }}>
+          <h2>Are we a match?</h2>
+          <MatchQuiz />
         </div>
       </main>
     </Container>
