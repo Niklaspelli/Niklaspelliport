@@ -40,7 +40,7 @@ class YouTubeVideo extends React.Component {
               </p>
             )}
 
-            {video.showLikeButton && <LikeButton />}
+            {video.showLikeButton && <LikeButton id={video.videoId} />}
             <div
               style={{ borderTop: "1px solid #ffa500", margin: "20px 0" }}
             ></div>

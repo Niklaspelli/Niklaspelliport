@@ -1,36 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { FaThumbsUp } from "react-icons/fa";
-import "./LikeButton.css"; // Ensure this file is in the same directory as your component
+import "./LikeButton.css";
 
-const LikeButton = () => {
+// Importera db och Firebase-metoder
+/* import { db } from "./firebaseConfig"; */ // Se till att sökvägen till din firebase.js stämmer
+
+import { db } from "../firebaseConfig";
+import { doc, setDoc, increment, onSnapshot } from "firebase/firestore";
+
+const LikeButton = ({ id }) => {
   const [likes, setLikes] = useState(0);
   const [isShaking, setIsShaking] = useState(false);
 
-  // Fetch the current like count from Netlify function
+  // 1. Lyssna på likes i realtid från Firebase
   useEffect(() => {
-    fetch("/.netlify/functions/like")
-      .then((response) => response.json())
-      .then((data) => setLikes(data.likes))
-      .catch((error) => console.error("Error fetching like count:", error));
-  }, []);
+    const likesRef = doc(db, "stats", id);
 
-  // Handle clicking the like button
-  const handleLike = () => {
-    fetch("/.netlify/functions/like", {
-      method: "POST",
-    })
-      .then((response) => response.json())
-      .then((data) => setLikes(data.likes))
-      .catch((error) => console.error("Error updating like count:", error));
+    // onSnapshot gör att siffran uppdateras direkt om någon annan klickar
+    const unsubscribe = onSnapshot(likesRef, (doc) => {
+      if (doc.exists()) {
+        setLikes(doc.data().count);
+      }
+    });
 
-    // Trigger the shake effect
-    setIsShaking(true);
-    setLikes(likes + 1);
+    return () => unsubscribe(); // Städa upp när komponenten stängs
+  }, [id]);
 
-    // Remove the shake effect after the animation duration (0.5s)
-    setTimeout(() => {
+  // 2. Hantera klick (skicka till Firebase)
+  const handleLike = async () => {
+    const likesRef = doc(db, "stats", id);
+
+    try {
+      // Trigger shake direkt för snabb respons i UI
+      setIsShaking(true);
+
+      // Uppdatera Firebase
+      await setDoc(likesRef, {
+        count: increment(1),
+      });
+
+      // Ta bort shake efter 0.5s
+      setTimeout(() => {
+        setIsShaking(false);
+      }, 500);
+    } catch (error) {
+      console.error("Error updating like count:", error);
       setIsShaking(false);
-    }, 500);
+    }
   };
 
   return (
@@ -42,7 +58,7 @@ const LikeButton = () => {
           border: "none",
           cursor: "pointer",
           margin: "20px",
-          color: "orange",
+          color: "green",
         }}
       >
         <FaThumbsUp size={42} className={isShaking ? "shake" : ""} />
