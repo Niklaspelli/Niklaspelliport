@@ -35,9 +35,13 @@ const LikeButton = ({ id }) => {
       setIsShaking(true);
 
       // Uppdatera Firebase
-      await setDoc(likesRef, {
-        count: increment(1),
-      });
+      await setDoc(
+        likesRef,
+        {
+          count: increment(1),
+        },
+        { merge: true },
+      );
 
       // Ta bort shake efter 0.5s
       setTimeout(() => {
