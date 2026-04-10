@@ -63,6 +63,12 @@ const MatchQuiz = () => {
     return Math.round((totalScore / maxScore) * 100);
   };
 
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setTotalScore(0);
+    setShowResult(false);
+  };
+
   return (
     <div className="quiz-container">
       {!showResult ? (
@@ -94,10 +100,7 @@ const MatchQuiz = () => {
               ? "are a perfect match! 🏆 When can I start?"
               : "should grab a coffee and talk some more. ☕️"}
           </p>
-          <button
-            className="btn btn-warning"
-            onClick={() => window.location.reload()}
-          >
+          <button className="btn btn-warning" onClick={resetQuiz}>
             Restart Quiz
           </button>
         </div>
