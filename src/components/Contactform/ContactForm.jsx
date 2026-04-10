@@ -159,7 +159,7 @@ const ContactForm = () => {
                   width: "150px", // Fast bredd så knappen inte hoppar
                   position: "relative",
                   overflow: "hidden",
-                  marginBottom: "30px",
+                  marginBottom: "100px",
                 }}
                 onClick={handleSubmit}
               >
