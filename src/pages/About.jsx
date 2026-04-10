@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MatchQuiz from "../components/MatchQuiz";
+import AboutStory from "./AboutStory";
 
 const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
@@ -55,11 +56,11 @@ function About() {
 
   return (
     <Container>
-      <div className="typer">
-        <h1>{message}</h1>
-      </div>
+      <h1>{message}</h1>
+
       <main className="About">
-        <div className="card-container">
+        <AboutStory />
+        {/*      <div className="card-container">
           <div className="card-bg">
             <p className="card-content" style={{ color: "orange" }}>
               <h2>About</h2>I am <b>Niklas Pelli</b>, born and raised in
@@ -86,8 +87,8 @@ function About() {
           <div className="card-img">
             <img src={bild} className="img-fluid" alt="" />
           </div>
-        </div>
-        <div className="flip-card-wrapper">
+        </div> */}
+        {/*   <div className="flip-card-wrapper">
           <div className="flip-card-container" onClick={handleClick}>
             <div className={`flip-card-inner ${isFlipped ? "flipped" : ""}`}>
               <div className="flip-card-front">
@@ -151,14 +152,7 @@ function About() {
                     margin: "10",
                   }}
                 />
-                {/*   <FontAwesomeIcon
-                  icon={faBootstrap}
-                  style={{
-                    color: "purple",
-                    fontSize: "5rem",
-                    margin: "10",
-                  }}
-                /> */}
+       
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                   alt="TypeScript"
@@ -166,8 +160,8 @@ function About() {
                 />
               </div>
             </div>
-          </div>
-        </div>
+          </div> */}
+
         <div style={{ padding: "20px", marginBottom: "40px" }}>
           <h2>Are we a match?</h2>
           <MatchQuiz />

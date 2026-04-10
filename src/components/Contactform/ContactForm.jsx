@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import InputField from "./InputField";
 import TextareaField from "./TextareaField";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { styled } from "styled-components";
 import "./contactform.css";
 import emailjs from "@emailjs/browser";
@@ -43,7 +43,7 @@ const ContactForm = () => {
       (error) => {
         console.log("FAILED...", error);
         setStatus("ERROR");
-      }
+      },
     );
   };
 
@@ -63,20 +63,39 @@ const ContactForm = () => {
   };
 
   const renderAlert = () => {
-    if (status === "SUCCESS") {
-      return (
-        <div className="popup" style={{ color: "white", marginTop: "10px" }}>
-          <p>Your mail was sent successfully!</p>
-        </div>
-      );
-    } else if (status === "ERROR") {
-      return (
-        <div className="popup" style={{ color: "red", marginTop: "10px" }}>
-          <p>Failed to send your mail. Please try again.</p>
-        </div>
-      );
-    }
-    return null;
+    return (
+      <AnimatePresence>
+        {status && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+            className={`fancy-popup ${status === "SUCCESS" ? "success" : "error"}`}
+          >
+            <div className="popup-content">
+              <div className="popup-icon">
+                {status === "SUCCESS" ? "✓" : "✕"}
+              </div>
+              <div className="popup-text">
+                <h5>{status === "SUCCESS" ? "Sent!" : "Oh no!"}</h5>
+                <p>
+                  {status === "SUCCESS"
+                    ? "Your message is on its way to Niklas."
+                    : "Something went wrong. Please try again."}
+                </p>
+              </div>
+            </div>
+            {/* En liten progress bar som visar när den försvinner */}
+            <motion.div
+              className="popup-progress"
+              initial={{ width: "100%" }}
+              animate={{ width: "0%" }}
+              transition={{ duration: 3 }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
   };
 
   return (

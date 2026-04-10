@@ -1,0 +1,149 @@
+.story-container {
+    max-width: 700px;
+    margin: 60px auto;
+    perspective: 1000px;
+    /* Ger lite 3D-känsla vid animationer */
+    text-align: center;
+}
+
+.story-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    padding: 40px;
+    border-radius: 20px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.story-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.story-card h2 {
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.story-card p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #eee;
+}
+
+.story-button {
+    margin-top: 30px;
+    background: #ffa500;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.story-button:hover {
+    transform: scale(1.05);
+    background: #ff8c00;
+}
+
+/* Progress bar styling */
+.progress-bar-bg {
+    width: 100%;
+    height: 4px;
+    background: #333;
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #ffa500;
+}
+
+
+.story-profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* Gör bilden rund */
+    object-fit: cover;
+    /* Ser till att ansiktet inte blir utsträckt */
+    border: 3px solid #ffa500;
+    /* Din orangea färg */
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+    /* Mjuk glöd runt bilden */
+    background-color: #333;
+    /* Fallback färg */
+}
+
+/* En liten hover-effekt för bilden */
+.story-profile-img:hover {
+    transform: scale(1.05) rotate(2deg);
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.7);
+}
+
+/* ... din befintliga CSS ... */
+
+.story-buttons {
+    margin-top: auto;
+    /* Tryck ner knapparna till botten */
+    width: 100%;
+}
+
+/* --- TECH STACK STYLING --- */
+.skills-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 kolumner */
+    gap: 15px;
+    margin: 30px 0;
+    width: 100%;
+    max-width: 500px;
+    /* Begränsa bredden för bättre layout */
+}
+
+/* Vid mindre skärmar, kör 2 kolumner */
+@media (max-width: 600px) {
+    .skills-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.bento-item {
+    background: rgba(26, 26, 26, 0.8);
+    /* Mörk bakgrund */
+    border: 2px solid rgba(255, 165, 0, 0.2);
+    /* Subtil orange border */
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: help;
+    /* Byt cursor för att visa att det händer något vid hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+    /* Glöd vid hover */
+}
+
+.bento-icon {
+    font-size: 3rem;
+    /* Stora ikoner */
+}
+
+.bento-icon-img {
+    width: 3rem;
+    height: 3rem;
+}

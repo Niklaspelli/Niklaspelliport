@@ -57,3 +57,86 @@ textarea {
     align-items: center;
 
 }
+
+/* Fixerad position så den svävar över innehållet */
+.fancy-popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    min-width: 300px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    border: 1px solid rgba(255, 165, 0, 0.2);
+}
+
+.fancy-popup.success {
+    border-left: 4px solid #ffa500;
+    /* Orange success */
+}
+
+.fancy-popup.error {
+    border-left: 4px solid #ff4b2b;
+    /* Röd error */
+}
+
+.popup-content {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.popup-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 165, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.fancy-popup.error .popup-icon {
+    background: rgba(255, 75, 43, 0.1);
+    color: #ff4b2b;
+}
+
+.popup-text h5 {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+}
+
+.popup-text p {
+    margin: 0;
+    color: #bbb;
+    font-size: 0.85rem;
+}
+
+/* Den lilla linjen som tickar ner i botten */
+.popup-progress {
+    height: 3px;
+    background: orange;
+    opacity: 0.6;
+}
+
+.fancy-popup.error .popup-progress {
+    background: #ff4b2b;
+}
+
+/* Responsivt för mobilen */
+@media (max-width: 480px) {
+    .fancy-popup {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        min-width: auto;
+    }
+}
