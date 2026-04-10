@@ -19,6 +19,7 @@ const ContactForm = () => {
     message: "",
   });
   const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,9 +29,11 @@ const ContactForm = () => {
       setStatus("ERROR");
       return;
     }
+    setIsSending(true);
 
     emailjs.send(service, template, values, id).then(
       (response) => {
+        setIsSending(false);
         console.log("SUCCESS!", response);
         setValues({
           fullName: "",
@@ -42,6 +45,7 @@ const ContactForm = () => {
       },
       (error) => {
         console.log("FAILED...", error);
+        setIsSending(false);
         setStatus("ERROR");
       },
     );
@@ -141,21 +145,63 @@ const ContactForm = () => {
               />
             </Form.Floating>
             {renderAlert()}
-            <Button
-              className="--btn"
-              type="submit"
-              style={{
-                background: "black",
-                border: "1px solid orange",
-                color: "orange",
-                padding: "6px 8px",
-                margin: "30px",
-                marginBottom: "80px",
-              }}
-              onClick={(e) => handleSubmit(e)}
-            >
-              Send
-            </Button>
+            <div style={{ position: "relative" }}>
+              <Button
+                className="--btn"
+                type="submit"
+                disabled={isSending} // Förhindra dubbelklick
+                style={{
+                  background: "black",
+                  border: "1px solid orange",
+                  color: "orange",
+                  padding: "6px 20px",
+                  margin: "30px 0",
+                  width: "150px", // Fast bredd så knappen inte hoppar
+                  position: "relative",
+                  overflow: "hidden",
+                  marginBottom: "30px",
+                }}
+                onClick={handleSubmit}
+              >
+                {isSending ? "Sending..." : "Send"}
+
+                {/* Denna rörelse skapar en "skugga" som sveper över knappen när man skickar */}
+                {isSending && (
+                  <motion.div
+                    className="button-shimmer"
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "100%" }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1,
+                      ease: "linear",
+                    }}
+                  />
+                )}
+              </Button>
+
+              {/* Den faktiska laddningsmätaren under knappen */}
+              <AnimatePresence>
+                {isSending && (
+                  <motion.div
+                    className="loading-bar-container"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <motion.div
+                      className="loading-bar-fill"
+                      animate={{ x: ["-100%", "100%"] }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 1.5,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </Col>
         </Row>
       </Grid>

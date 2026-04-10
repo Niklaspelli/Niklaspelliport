@@ -140,3 +140,44 @@ textarea {
         min-width: auto;
     }
 }
+
+/* Glöden inuti knappen */
+.button-shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 165, 0, 0.2),
+            transparent);
+}
+
+/* Behållaren under knappen */
+.loading-bar-container {
+    width: 150px;
+    height: 3px;
+    background: rgba(255, 165, 0, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: -25px;
+    /* Placera den precis under knappen */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Själva mätaren som rör sig */
+.loading-bar-fill {
+    width: 60%;
+    height: 100%;
+    background: orange;
+    box-shadow: 0 0 10px orange;
+    border-radius: 2px;
+}
+
+/* Gör knappen lite mörkare när den är disabled */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
