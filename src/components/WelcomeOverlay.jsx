@@ -47,7 +47,9 @@ const WelcomeOverlay = () => {
               <p className="typing-text">
                 Initialize visitor identification...
               </p>
-              <p className="typing-text">Please enter your name to proceed:</p>
+              <p className="typing-text">
+                Please enter your name to proceed to Niklas portfolio:
+              </p>
 
               <form onSubmit={handleStart} className="name-form">
                 <input
