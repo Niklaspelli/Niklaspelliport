@@ -14,10 +14,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MatchQuiz from "../components/MatchQuiz";
 import AboutStory from "./AboutStory";
+import { useUser } from "../context/Usercontext";
 
 const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
 function About() {
+  const { userName } = useUser();
   const [isFlipped, setIsFlipped] = useState(false);
   const [message, setMessage] = useState("Good Evening!");
 
@@ -29,25 +31,9 @@ function About() {
     } else if (currentHour < 18) {
       setMessage("Good day and welcome!");
     } else {
-      setMessage("Good evening and welcome!");
+      setMessage(`Good evening and welcome, ${userName}!`);
     }
-  }, []); // Empty dependency array to run once when the component mounts. */
-
-  const downloadFileAtURL = (url) => {
-    fetch(url)
-      .then((response) => response.blob())
-      .then((blob) => {
-        const blobURL = window.URL.createObjectURL(new Blob([blob]));
-
-        const fileName = url.split("/").pop();
-        const aTag = document.createElement("a");
-        aTag.href = blobURL;
-        aTag.setAttribute("download", fileName);
-        document.body.appendChild(aTag);
-        aTag.click();
-        aTag.remove();
-      });
-  };
+  }, [userName]); // Empty dependency array to run once when the component mounts. */
 
   // Toggle flip state when the card is clicked
   const handleClick = () => {
@@ -163,7 +149,7 @@ function About() {
           </div> */}
 
         <div style={{ padding: "20px", marginBottom: "40px" }}>
-          <h2>Are we a match?</h2>
+          <h2>Are we a match, {userName}?</h2>
           <MatchQuiz />
         </div>
       </main>

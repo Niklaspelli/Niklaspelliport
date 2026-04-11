@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   faReact,
@@ -13,66 +13,68 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./AboutStory.css";
 import niklasImg from "/Niklas.jpg"; // Importera din bild
+import { useUser } from "../context/Usercontext";
 const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
-const scenes = [
-  {
-    id: 0,
-    title: "The Journey Begins",
-    text: "I was born and raised in the far north of Sweden, in a small town called Haparanda. It's a place where the air is cold but the ideas are always fresh.",
-    buttonText: "Where did life take you next? →",
-    image: "❄️",
-    imageSrc: niklasImg, // Visa den igen som ett "avslut"
-  },
-  {
-    id: 1,
-    title: "The Big Move",
-    text: "I traded the quiet north for the pulse of Stockholm to study 'Front-end Cyber Security' at Jensen Yrkeshögskola. A perfect blend of creativity and digital safety.",
-    options: [
-      { text: "Show me your tech stack", next: 2 }, // Ny väg till tech stack
-      { text: "Tell me about your creativity", next: 3 }, // Justerat id
-    ],
-    image: "📍",
-  },
-  {
-    id: 2,
-    title: "My Digital Toolbox", // Denna rubrik ändras vid hovring
-    text: "From front-end magic to secure back-ends, here are some of the tools I use to bring ideas to life.",
-    isTechStack: true, // Flagga för att vi ska rendera gridet
-    buttonText: "What else? →",
-    next: 3,
-    image: "🛠️",
-  },
-  {
-    id: 3,
-    title: "A Creative Soul",
-    text: "Whether it's web design, composing music, or finding new outlets, my creativity is what drives me. I don't just build websites; I create digital art.",
-    buttonText: "And as a teammate? →",
-    next: 4,
-    image: "🎸",
-  },
-  {
-    id: 4,
-    title: "Team Player at Heart",
-    text: "I believe the best ideas come from collaboration. I'm a team player at heart who loves to bounce ideas and grow together with others.",
-    buttonText: "Let's connect! →",
-    next: 5,
-    image: "🤝",
-  },
-  {
-    id: 5,
-    title: "Let's Build Something",
-    text: "Now that you know my story, I'd love to hear yours. You can download my CV below or hit the contact button to start a conversation!",
-    buttonText: "Restart Story ↺",
-    isEnd: true,
-    image: "✉️",
-    imageSrc: niklasImg, // Visa den igen som ett "avslut"
-  },
-];
-
 const AboutStory = () => {
+  const { userName } = useUser();
   const [currentIdx, setCurrentIdx] = useState(0);
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const scenes = [
+    {
+      id: 0,
+      title: "The Journey Begins",
+      text: `So, ${userName}, I was born and raised in the far north of Sweden, in a small town called Haparanda. It's a place where the air is cold but the ideas are always fresh.`,
+      buttonText: "Where did life take you next? →",
+      image: "❄️",
+      imageSrc: niklasImg, // Visa den igen som ett "avslut"
+    },
+    {
+      id: 1,
+      title: "The Big Move",
+      text: "I traded the quiet north for the pulse of Stockholm to study 'Front-end Cyber Security' at Jensen Yrkeshögskola. A perfect blend of creativity and digital safety.",
+      options: [
+        { text: "Show me your tech stack", next: 2 }, // Ny väg till tech stack
+        { text: "Tell me about your creativity", next: 3 }, // Justerat id
+      ],
+      image: "📍",
+    },
+    {
+      id: 2,
+      title: "My Digital Toolbox", // Denna rubrik ändras vid hovring
+      text: `Hey ${userName}, click an icon to see what I think about these tools.`,
+      isTechStack: true, // Flagga för att vi ska rendera gridet
+      buttonText: "What else? →",
+      next: 3,
+      image: "🛠️",
+    },
+    {
+      id: 3,
+      title: "A Creative Soul",
+      text: "Whether it's web design, composing music, or finding new outlets, my creativity is what drives me. I don't just build websites; I create digital art.",
+      buttonText: "And as a teammate? →",
+      next: 4,
+      image: "🎸",
+    },
+    {
+      id: 4,
+      title: "Team Player at Heart",
+      text: `I believe the best ideas come from collaboration. I'm a team player, ${userName}, and I'd love to bounce ideas with you!`,
+      buttonText: "Let's connect! →",
+      next: 5,
+      image: "🤝",
+    },
+    {
+      id: 5,
+      title: "Let's Build Something",
+      text: "Now that you know my story, I'd love to hear yours. You can download my CV below or hit the contact button to start a conversation!",
+      buttonText: "Restart Story ↺",
+      isEnd: true,
+      image: "✉️",
+      imageSrc: niklasImg, // Visa den igen som ett "avslut"
+    },
+  ];
+
   const scene = scenes[currentIdx];
 
   // Lista över dina skills med färg och roliga beskrivningar
@@ -276,3 +278,15 @@ const AboutStory = () => {
 };
 
 export default AboutStory;
+
+/* 
+3. Hur du använder namnet interaktivt
+Här är några ställen där det ger mest effekt:
+
+I din Story: Istället för att bara skriva "I'm a team player", skriv: "I'm a team player, {userName}, and I'd love to bounce ideas with you!"
+
+I ditt Quiz: "Let's see, {userName}, how well do we actually match?"
+
+I Kontaktformuläret: Förifyll namnfältet! Om de redan angett sitt namn i början, visa att du är smart: "I've already filled in your name, {userName}. Just type your message below!"
+
+I din Tech-stack: "Hey {userName}, click an icon to see what I think about these tools." */
