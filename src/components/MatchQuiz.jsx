@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MatchQuiz.css";
 import { db } from "../../firebaseConfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { useUser } from "../context/Usercontext";
 
 const questions = [
   {
@@ -33,6 +34,7 @@ const MatchQuiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const { userName } = useUser();
 
   const handleAnswer = async (score) => {
     const nextScore = totalScore + score;
@@ -97,7 +99,7 @@ const MatchQuiz = () => {
           <p className="result-text">
             It looks like we{" "}
             {calculateMatch() > 80
-              ? "are a perfect match! 🏆 When can I start?"
+              ? `are a perfect match, ${userName} 🏆 When can I start?`
               : "should grab a coffee and talk some more. ☕️"}
           </p>
           <button className="btn btn-warning" onClick={resetQuiz}>

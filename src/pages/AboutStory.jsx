@@ -67,7 +67,7 @@ const AboutStory = () => {
     {
       id: 5,
       title: "Let's Build Something",
-      text: "Now that you know my story, I'd love to hear yours. You can download my CV below or hit the contact button to start a conversation!",
+      text: `Now that you know my story, ${userName}, I'd love to hear yours. You can download my CV below or hit the contact button to start a conversation!`,
       buttonText: "Restart Story ↺",
       isEnd: true,
       image: "✉️",

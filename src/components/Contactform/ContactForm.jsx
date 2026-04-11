@@ -6,12 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { styled } from "styled-components";
 import "./contactform.css";
 import emailjs from "@emailjs/browser";
+import { useUser } from "../../context/Usercontext";
 
 const service = import.meta.env.VITE_SERVICE;
 const template = import.meta.env.VITE_TEMPLATE;
 const id = import.meta.env.VITE_ID;
 
 const ContactForm = () => {
+  const { userName } = useUser();
   const [values, setValues] = useState({
     fullName: "",
     email: "",
@@ -111,7 +113,7 @@ const ContactForm = () => {
         transition={{ duration: 1 }}
       >
         <Row className="justify-content-center align-items-center h-100">
-          <h2 style={{ color: "orange" }}>Send me a message!</h2>
+          <h2 style={{ color: "orange" }}>Send me a message, {userName}!</h2>
           <Col md={6} lg={4} className="justify-content-center">
             <label style={{ color: "orange" }}>Name:</label>
             <Form.Floating className="mb-1" inline>
