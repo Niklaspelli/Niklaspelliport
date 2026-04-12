@@ -28,7 +28,7 @@
 }
 
 .grey-wave {
-    background-color: rgba(143, 72, 6, 0.4);
+    background-color: rgba(177, 88, 5, 0.4);
     z-index: 1;
     animation: wave-rotate 25s infinite linear;
 }
@@ -82,7 +82,7 @@
 }
 
 .grey-wave {
-    background-color: rgba(42, 35, 44, 0.5);
+    background-color: rgba(88, 46, 10, 0.5);
     animation: wave-rotate 25s infinite linear;
 }
 
