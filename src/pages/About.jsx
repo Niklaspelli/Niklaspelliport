@@ -27,9 +27,9 @@ function About() {
     const currentHour = new Date().getHours();
 
     if (currentHour < 12) {
-      setMessage("Good morning and welcome!");
+      setMessage(`Good morning and welcome, ${userName}!`);
     } else if (currentHour < 18) {
-      setMessage("Good day and welcome!");
+      setMessage(`Good day and welcome, ${userName}!`);
     } else {
       setMessage(`Good evening and welcome, ${userName}!`);
     }
@@ -149,7 +149,7 @@ function About() {
           </div> */}
 
         <div style={{ padding: "20px", marginBottom: "40px" }}>
-          <h2>Are we a match, {userName}?</h2>
+          <h2>Let's see, {userName}, how well do we actually match?</h2>
           <MatchQuiz />
         </div>
       </main>

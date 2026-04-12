@@ -147,3 +147,36 @@
     width: 3rem;
     height: 3rem;
 }
+
+/* Styling specifikt för trumbilden/kreativa scenen */
+.creative-showcase-img {
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+
+    /* 1. Behåll cover för att fylla ut ytan */
+    object-fit: cover;
+
+    /* 2. Ändra positionen till top. 
+       Detta gör att bilden "förankras" i överkanten och kapar det som 
+       inte får plats i botten istället. */
+    object-position: top;
+
+    border-radius: 8px;
+    border: 1px solid rgba(255, 165, 0, 0.4);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.15);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* En mjuk övergång om du ändrar höjd/bild senare */
+    transition: object-position 0.3s ease;
+}
+
+/* Valfritt: En liten hover-effekt för att göra den mer interaktiv */
+.creative-showcase-img:hover {
+    border-color: rgba(255, 165, 0, 0.8);
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
+    transition: all 0.3s ease;
+}

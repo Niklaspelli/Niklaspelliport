@@ -1,0 +1,42 @@
+.github-text {
+    line-height: 1.4;
+    margin: 0;
+}
+
+.github-text .label {
+    color: #666;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.github-text .date {
+    color: #aaa;
+}
+
+.commit-link {
+    color: orange !important;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.commit-link:hover {
+    opacity: 1;
+    text-shadow: 0 0 5px orange;
+}
+
+.github-status {
+    background: rgba(255, 165, 0, 0.05);
+    /* Väldigt svag orange bakgrund */
+    border-left: 2px solid orange;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.github-text {
+    font-size: 0.75rem !important;
+    /* Lite mindre text på Work-sidan */
+    margin: 0;
+}

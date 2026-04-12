@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./AboutStory.css";
 import niklasImg from "/Niklas.jpg"; // Importera din bild
+import trumbild from "/trumbild.jpg";
 import { useUser } from "../context/Usercontext";
 const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
@@ -54,7 +55,7 @@ const AboutStory = () => {
       text: "Whether it's web design, composing music, or finding new outlets, my creativity is what drives me. I don't just build websites; I create digital art.",
       buttonText: "And as a teammate? →",
       next: 4,
-      image: "🎸",
+      imageSrc: trumbild,
     },
     {
       id: 4,
@@ -173,7 +174,9 @@ const AboutStory = () => {
             <motion.img
               src={scene.imageSrc}
               alt="Niklas Pelli"
-              className="story-profile-img"
+              className={
+                scene.id === 3 ? "creative-showcase-img" : "story-profile-img"
+              }
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{
