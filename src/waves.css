@@ -1,0 +1,94 @@
+.wave-container {
+    /* Ändra till fixed så den sitter fast när man skrollar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    /* Lägg den bakom allt innehåll */
+    background-color: #0b0b0b;
+    /* Din mörka basfärg så vågorna syns */
+}
+
+.wave {
+    position: absolute;
+    /* Gör vågorna massiva så de täcker hela bredden även när de roterar */
+    width: 300vw;
+    height: 300vw;
+    left: -100vw;
+    /* Placera dem djupt ner så bara toppen av cirkeln syns som en våg */
+    top: 60vh;
+    border-radius: 43%;
+    /* 40-45% ger bäst vågeffekt */
+    filter: blur(2px);
+    /* Valfritt: mjukar upp kanterna lite */
+}
+
+.grey-wave {
+    background-color: rgba(143, 72, 6, 0.4);
+    z-index: 1;
+    animation: wave-rotate 25s infinite linear;
+}
+
+.white-wave {
+    background-color: rgba(62, 62, 100, 0.3);
+    /* Sänkt opacity för mer "djup" */
+    z-index: 2;
+    animation: wave-rotate-white 35s infinite linear;
+}
+
+/* Animation */
+@keyframes wave-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wave-rotate-white {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.white-wave {
+    animation: wave-rotate-white 20s infinite linear;
+}
+
+/* MOBIL-ANPASSNING */
+@media (max-width: 768px) {
+    .wave {
+        width: 400vw;
+        /* Gör cirkeln ännu större på mobilen för en flackare våg */
+        height: 400vw;
+        left: -150vw;
+        top: 85vh;
+        /* Putta ner den mer så den inte dränker dina projektkort */
+    }
+}
+
+.grey-wave {
+    background-color: rgba(42, 35, 44, 0.5);
+    animation: wave-rotate 25s infinite linear;
+}
+
+.white-wave {
+    background-color: rgba(62, 62, 100, 0.4);
+    animation: wave-rotate-white 35s infinite linear;
+    /* Lägg till en liten delay så vågorna inte rör sig i otakt */
+    animation-delay: -5s;
+}
