@@ -180,3 +180,13 @@
     box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
     transition: all 0.3s ease;
 }
+
+/* MEDIA QUERY FÖR MOBIL (Skärmar mindre än 768px) */
+@media (max-width: 768px) {
+    .creative-showcase-img {
+        height: 220px;
+        /* Sänk höjden på mobilen så bilden inte "zoomas in" */
+        object-position: center top;
+        /* Säkerställ att vi fortfarande ser toppen */
+    }
+}
