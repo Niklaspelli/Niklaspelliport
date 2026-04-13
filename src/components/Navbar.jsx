@@ -12,6 +12,7 @@ export default function Navbar() {
           About
         </CustomLink>
         <CustomLink to="/Work">Work</CustomLink>
+        <CustomLink to="/Guestbook">Terminalbook</CustomLink>
         <CustomLink to="/Contact">Contact</CustomLink>
       </ul>
     </nav>

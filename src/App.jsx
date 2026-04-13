@@ -11,6 +11,7 @@ import "./waves.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import WelcomeOverlay from "./components/WelcomeOverlay.jsx";
+import Guestbook from "./pages/Guestbook.jsx";
 
 function App() {
   const [userName, setUserName] = useState(
@@ -43,6 +44,7 @@ function App() {
             <Route path="/" element={<About />} />
             <Route path="/About" element={<About />} />
             <Route path="/Work" element={<Work />} />
+            <Route path="/Guestbook" element={<Guestbook />} />
             <Route path="/Contact" element={<ContactForm />} />
           </Routes>
         </div>
