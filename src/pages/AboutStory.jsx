@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./AboutStory.css";
 import niklasImg from "/Niklas.jpg"; // Importera din bild
 import trumbild from "/trumbild.jpg";
+import highfive from "/highfive.png";
 import { useUser } from "../context/Usercontext";
 const PDF_FILE_URL = "./Niklas_Pelli_CV_SV.pdf";
 
@@ -63,7 +64,7 @@ const AboutStory = () => {
       text: `I believe the best ideas come from collaboration. I'm a team player, ${userName}, and I'd love to bounce ideas with you!`,
       buttonText: "Let's connect! →",
       next: 5,
-      image: "🤝",
+      imageSrc: highfive,
     },
     {
       id: 5,
@@ -175,7 +176,11 @@ const AboutStory = () => {
               src={scene.imageSrc}
               alt="Niklas Pelli"
               className={
-                scene.id === 3 ? "creative-showcase-img" : "story-profile-img"
+                scene.id === 3
+                  ? "creative-showcase-img"
+                  : scene.id === 4
+                    ? "teamplayer-showcase-img"
+                    : "story-profile-img"
               }
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}

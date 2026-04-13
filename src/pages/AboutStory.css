@@ -68,8 +68,8 @@
 
 
 .story-profile-img {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     /* Gör bilden rund */
     object-fit: cover;
@@ -148,45 +148,70 @@
     height: 3rem;
 }
 
-/* Styling specifikt för trumbilden/kreativa scenen */
 .creative-showcase-img {
     width: 100%;
-    max-width: 500px;
-    height: 350px;
+    max-width: 300px;
+    height: 300px;
+    /* Här bestämmer vi den exakta storleken på rutan */
 
-    /* 1. Behåll cover för att fylla ut ytan */
-    object-fit: cover;
+    /* 1. Ändra till contain! Nu visas HELA bilden inuti rutan */
+    object-fit: contain;
 
-    /* 2. Ändra positionen till top. 
-       Detta gör att bilden "förankras" i överkanten och kapar det som 
-       inte får plats i botten istället. */
-    object-position: top;
+    /* 2. En mörk bakgrund gör att rutan syns även om bilden inte fyller ut allt */
+    background-color: rgba(0, 0, 0, 0.2);
 
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 165, 0, 0.4);
     box-shadow: 0 0 20px rgba(255, 165, 0, 0.15);
-    margin-bottom: 20px;
+
+    margin-bottom: 25px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-
-    /* En mjuk övergång om du ändrar höjd/bild senare */
-    transition: object-position 0.3s ease;
+    padding: 5px;
+    /* Lite luft mellan bild och ram */
 }
 
-/* Valfritt: En liten hover-effekt för att göra den mer interaktiv */
-.creative-showcase-img:hover {
-    border-color: rgba(255, 165, 0, 0.8);
-    box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
-    transition: all 0.3s ease;
+.teamplayer-showcase-img {
+    width: 100%;
+    max-width: 250px;
+    height: 300px;
+    /* Här bestämmer vi den exakta storleken på rutan */
+
+    /* 1. Ändra till contain! Nu visas HELA bilden inuti rutan */
+    object-fit: contain;
+
+    /* 2. En mörk bakgrund gör att rutan syns även om bilden inte fyller ut allt */
+    background-color: rgba(0, 0, 0, 0.2);
+
+    border-radius: 12px;
+    border: 1px solid rgba(255, 165, 0, 0.4);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.15);
+
+    margin-bottom: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    /* Lite luft mellan bild och ram */
 }
 
-/* MEDIA QUERY FÖR MOBIL (Skärmar mindre än 768px) */
+/* Hover-effekt som matchar båda bilderna */
+.creative-showcase-img:hover,
+.teamplayer-showcase-img:hover {
+    border-color: rgba(255, 165, 0, 0.9);
+    box-shadow: 0 0 35px rgba(255, 165, 0, 0.4);
+    transform: scale(1.02);
+    /* Subtil zoom för att visa att den är interaktiv */
+}
+
+/* Responsivitet - Ser till att de matchar även på mobilen */
 @media (max-width: 768px) {
     .creative-showcase-img {
-        height: 220px;
-        /* Sänk höjden på mobilen så bilden inte "zoomas in" */
-        object-position: center top;
-        /* Säkerställ att vi fortfarande ser toppen */
+        height: 250px;
+        max-width: 250px;
+
+        /* Något högre än innan för att visa mer av highfive-scenen */
+
     }
 }
