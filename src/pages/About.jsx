@@ -42,7 +42,7 @@ function About() {
 
   return (
     <Container>
-      <h1>{message}</h1>
+      <h1 style={{ color: "white" }}>{message}</h1>
 
       <main className="About">
         <AboutStory />
@@ -149,7 +149,9 @@ function About() {
           </div> */}
 
         <div style={{ padding: "20px", marginBottom: "40px" }}>
-          <h2>Let's see, {userName}, how well do we actually match?</h2>
+          <h2 style={{ color: "white" }}>
+            Let's see, {userName}, how well do we actually match?
+          </h2>
           <MatchQuiz />
         </div>
       </main>

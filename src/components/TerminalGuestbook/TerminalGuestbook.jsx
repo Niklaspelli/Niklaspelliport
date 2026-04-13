@@ -60,7 +60,7 @@ const TerminalGuestbook = () => {
 
   return (
     <div className="terminal-feed-container" style={styles.container}>
-      <h2>Leave a comment in the Terminal:</h2>
+      <h2 style={{ color: "white" }}>Leave a comment in the Terminal:</h2>
       <div className="terminal-header" style={styles.header}>
         <span style={styles.dot}></span> [LIVE_NETWORK_TRAFFIC]
       </div>

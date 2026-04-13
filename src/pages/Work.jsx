@@ -44,7 +44,7 @@ Although the project is not perfect and lacks some advanced features, it was a f
   return (
     <Container>
       <main className="Work" style={{ color: "orange" }}>
-        <h1>My work</h1>
+        <h1 style={{ color: "white" }}>My work</h1>
         <YouTubeVideo videos={videos} />
       </main>
     </Container>

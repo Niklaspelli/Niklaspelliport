@@ -1,7 +1,5 @@
-import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
-import Home from "./pages/Home";
 import Work from "./pages/Work";
 import ContactForm from "./components/Contactform/ContactForm";
 import { useState } from "react";
@@ -39,15 +37,13 @@ function App() {
         {/* Denna renderas nu globalt så den täcker hela sidan tills man är klar */}
         <WelcomeOverlay />
 
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<About />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Work" element={<Work />} />
-            <Route path="/Guestbook" element={<Guestbook />} />
-            <Route path="/Contact" element={<ContactForm />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Work" element={<Work />} />
+          <Route path="/Guestbook" element={<Guestbook />} />
+          <Route path="/Contact" element={<ContactForm />} />
+        </Routes>
 
         <Footer />
       </Router>

@@ -9,12 +9,12 @@ body {
     max-height: 100%;
     font-size: 18px;
     overflow-x: hidden;
-
-    background: linear-gradient(#111111, #292929);
+    padding-top: 100px;
     background-size: cover;
-    color: #ffa500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
 
 .workLink {
     color: white;
@@ -27,7 +27,6 @@ body {
 }
 
 .nav {
-    background-color: #0a0a0a;
     color: orange;
     display: flex;
     border-bottom: 1px solid orange;
@@ -139,15 +138,11 @@ li {
     align-items: center;
 }
 
-h1,
 h2 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 20px;
 }
 
-h1 {
-    font-size: 40px;
-}
 
 h2 {
     font-size: 30px;

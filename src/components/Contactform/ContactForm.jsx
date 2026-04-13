@@ -113,7 +113,7 @@ const ContactForm = () => {
         transition={{ duration: 1 }}
       >
         <Row className="justify-content-center align-items-center h-100">
-          <h1 style={{ color: "orange" }}>Send me a message, {userName}!</h1>
+          <h1 style={{ color: "white" }}>Send me a message, {userName}!</h1>
           <Col md={6} lg={4} className="justify-content-center">
             <label style={{ color: "orange" }}>Name:</label>
             <Form.Floating className="mb-1" inline>
