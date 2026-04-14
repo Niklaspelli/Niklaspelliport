@@ -37,101 +37,103 @@ import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
 export default function PelliNavbar() {
   const [expanded, setExpanded] = useState(false);
+
   return (
     <>
       <style>{`
-        /* Bakgrund och ram */
-        .navbar-custom {
-          background-color: #0a0a0a !important;
-          border-bottom: 1px solid orange;
-        }
+  /* Bakgrund och ram */
+  .navbar-custom {
+    background-color: #0a0a0a !important;
+    border-bottom: 1px solid orange;
+  }
 
-        /* All text ska vara orange */
-        .navbar-custom .navbar-brand,
-        .navbar-custom .nav-link,
-        .navbar-custom .dropdown-toggle,
-        .navbar-custom .dropdown-item {
-          color: orange !important;
-        }
+  /* All text ska vara orange */
+  .navbar-custom .navbar-brand,
+  .navbar-custom .nav-link,
+  .navbar-custom .dropdown-toggle,
+  .navbar-custom .dropdown-item {
+    color: orange !important;
+  }
 
-        /* Titeln (Home) */
-        .brand-text {
-          font-size: 1.5rem;
-          font-weight: bold;
-          text-decoration: none;
-              animation: glow 1s ease-in-out infinite alternate;
+  .brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
 
-        }
+  /* Dropdown-menyn styling */
+  .navbar-custom .dropdown-menu {
+    background-color: #0a0a0a !important;
+    border: 1px solid orange !important;
+    padding: 0;
+    border-radius: 4px;
+  }
 
-        /* Dropdown-menyn styling */
-      .navbar-custom .dropdown-menu {
-  background-color: #0a0a0a !important;
-  border: 1px solid orange !important;
-  padding: 0; /* Tar bort Bootstraps standard-padding */
-  border-radius: 4px; /* Valfritt: för snyggare hörn */
-}
+  /* --- HAMBURGERMENY (Endast för mobil/tablet) --- */
+  @media (max-width: 991px) {
+    .navbar-toggler {
+      display: flex !important; /* Tvinga flex endast i mobilläge */
+      align-items: center;
+      gap: 8px;
+      border-color: orange !important;
+      padding: 5px 10px !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
 
-/* 2. Se till att länkarna inuti inte får vit bakgrund vid hover */
-.navbar-custom .dropdown-item {
-  color: orange !important;
-  background-color: transparent !important;
-  padding: 10px 20px;
-}
+  /* --- DESKTOP (Dölj toggler helt) --- */
+  @media (min-width: 992px) {
+    .navbar-toggler {
+      display: none !important;
+    }
+  }
 
-.navbar-custom .dropdown-item:hover {
-  background-color: rgba(255, 165, 0, 0.1) !important; /* Din orangea hover-effekt */
-  color: orange !important;
-}
+  .toggler-text {
+    color: orange;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
 
-/* 3. Ta bort den lilla vita "pilen" om den syns i vissa webbläsare */
-.dropdown-menu[data-bs-popper] {
-  margin-top: 0;
-}
+  .navbar-toggler-icon {
+    filter: invert(65%) sepia(97%) saturate(1354%) hue-rotate(360deg) brightness(103%) contrast(106%);
+    width: 1.2em;
+    height: 1.2em;
+  }
 
-        /* Hamburgermeny-ikonen */
-        .navbar-toggler {
-          border-color: orange !important;
-        }
-      .navbar-toggler-icon {
-  filter: invert(65%) sepia(97%) saturate(1354%) hue-rotate(360deg) brightness(103%) contrast(106%);
-}
-
-
-.nav-item {
+  /* Underline-effekt på länkar */
+  .nav-item {
     position: relative;
     display: flex;
     align-items: center;
-}
+  }
 
-.nav-item::after {
+  .nav-item::after {
     content: '';
     height: 2px;
-    width: 95%;
+    width: 0%;
     background: orange;
     position: absolute;
-    left: 0;
-    bottom: 0; /* Justerad för att ligga i botten av navbaren */
+    left: 5%;
+    bottom: 0;
     opacity: 0;
-    transition: all 0.4s;
+    transition: all 0.3s ease;
     pointer-events: none;
-}
+  }
 
-/* Visa linjen vid hover eller om länken är aktiv */
-.nav-item:hover::after, 
-.nav-item.active::after {
-    opacity: 3;
-}
-
-
-.navbar-toggler {
-  border-color: orange !important;
-}
-      `}</style>
+  .nav-item:hover::after, 
+  .nav-item.active::after {
+    width: 90%;
+    opacity: 1;
+  }
+`}</style>
 
       <Navbar
-        expanded={expanded} // Koppla statet till Bootstrap
-        onToggle={(isExpanded) => setExpanded(isExpanded)} // Uppdatera när man klickar på hamburgaren
-        expand="lg"
+        expanded={expanded}
+        onToggle={(isExpanded) => setExpanded(isExpanded)}
+        expand="lg" // Detta är standard för laptop-brytpunkt
         fixed="top"
         className="navbar-custom"
       >
@@ -145,33 +147,40 @@ export default function PelliNavbar() {
             HOME
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <span className="toggler-text d-lg-none">MENU</span>
+            <span className="navbar-toggler-icon"></span>
+          </Navbar.Toggle>
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              {/* Skicka med setExpanded till dina länkar */}
               <CustomLink to="/About" setExpanded={setExpanded}>
                 ABOUT
               </CustomLink>
               <CustomLink to="/Work" setExpanded={setExpanded}>
                 WORK
               </CustomLink>
-
-              <NavDropdown title="CONTACT" id="basic-nav-dropdown">
-                <NavDropdown.Item
-                  as={Link}
-                  to="/Contact"
-                  onClick={() => setExpanded(false)}
-                >
-                  SEND MESSAGE
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={Link}
-                  to="/Guestbook"
-                  onClick={() => setExpanded(false)}
-                >
-                  GUESTBOOK
-                </NavDropdown.Item>
+              <NavDropdown
+                title="CONTACT"
+                id="basic-nav-dropdown"
+                className="nav-item"
+              >
+                <div className="navbar-custom .dropdown-menu">
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/Contact"
+                    onClick={() => setExpanded(false)}
+                  >
+                    SEND MESSAGE
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/Guestbook"
+                    onClick={() => setExpanded(false)}
+                  >
+                    GUESTBOOK
+                  </NavDropdown.Item>
+                </div>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
@@ -191,7 +200,7 @@ function CustomLink({ to, children, setExpanded }) {
         as={Link}
         to={to}
         className="px-3"
-        onClick={() => setExpanded(false)} // STÄNGER MENYN HÄR
+        onClick={() => setExpanded(false)}
       >
         {children}
       </Nav.Link>
