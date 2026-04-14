@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { db } from "../../../firebaseConfig";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import {
   collection,
   query,
@@ -59,41 +60,67 @@ const TerminalGuestbook = () => {
   };
 
   return (
-    <div className="terminal-feed-container" style={styles.container}>
-      <h2 style={{ color: "white" }}>Leave a comment in the Terminal:</h2>
-      <div className="terminal-header" style={styles.header}>
-        <span style={styles.dot}></span> [LIVE_NETWORK_TRAFFIC]
-      </div>
+    <Container className="py-2">
+      {" "}
+      {/* Ger luft över och under */}
+      <Row className="justify-content-center">
+        {/* xs={12} = Full bredd på mobilen
+         md={8}  = 8 av 12 kolumner på surfplatta
+         lg={6}  = 6 av 12 kolumner på dator
+      */}
+        <Col xs={12} md={8} lg={6}>
+          <h2
+            className="mb-4"
+            style={{
+              color: "orange",
+              textAlign: "center",
+              fontFamily: "'Courier New', monospace",
+            }}
+          >
+            &gt; TERMINAL_GUESTBOOK
+          </h2>
 
-      <div className="terminal-body" style={styles.body} ref={scrollRef}>
-        <AnimatePresence>
-          {messages.map((msg) => (
-            <motion.div
-              key={msg.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              style={styles.logLine}
-            >
-              <span style={styles.timestamp}>
-                [{new Date(msg.timestamp?.toDate()).toLocaleTimeString()}]
-              </span>
-              <span style={styles.user}> {msg.name}@root:</span>
-              <span style={styles.text}> {msg.text}</span>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
+          <div className="terminal-feed-container" style={styles.container}>
+            <div className="terminal-header" style={styles.header}>
+              <span style={styles.dot}></span> [LIVE_NETWORK_TRAFFIC]
+            </div>
 
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <span style={styles.prompt}></span>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter log message..."
-          style={styles.input}
-        />
-      </form>
-    </div>
+            <div className="terminal-body" style={styles.body} ref={scrollRef}>
+              <AnimatePresence>
+                {messages.map((msg) => (
+                  <motion.div
+                    key={msg.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    style={styles.logLine}
+                  >
+                    <span style={styles.timestamp}>
+                      [
+                      {msg.timestamp
+                        ? new Date(msg.timestamp.toDate()).toLocaleTimeString()
+                        : "..."}
+                      ]
+                    </span>
+                    <span style={styles.user}> {msg.name}@root:</span>
+                    <span style={styles.text}> {msg.text}</span>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            <Form onSubmit={handleSubmit} style={styles.form}>
+              <span style={styles.prompt}>&gt;_</span>
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter log message..."
+                style={styles.input}
+              />
+            </Form>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -101,13 +128,12 @@ const TerminalGuestbook = () => {
 const styles = {
   container: {
     background: "#0a0a0a",
-    border: "1px solid #333",
+    border: "1px solid orange", // Matchar din navbar nu!
     borderRadius: "8px",
     fontFamily: "'Courier New', monospace",
-    maxWidth: "800px",
-    margin: "2rem auto",
+    width: "100%", // Ta upp hela kolumnens bredd
     overflow: "hidden",
-    boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+    boxShadow: "0 0 20px rgba(255, 165, 0, 0.2)", // Orange glöd
   },
   header: {
     background: "#1a1a1a",
