@@ -24,18 +24,18 @@ The goal is to build a responsive, secure, and scalable web application with a c
       showLikeButton: true,
     },
     {
-      videoId: "diBxFVftmf4",
+      videoId: "DrnsbG_C0Q8",
       title: "Simple Webshop (School Project)",
-      repoName: "WebshopProject",
-      description: `This is a simple webshop developed as part of a school project using React (Vite) for the frontend and Node.js (Express) for the backend. Instead of a traditional database, I utilized a JSON server to simulate the backend API.
+      repoName: "mock-webshop-typescript",
+      description: `This is a simple webshop developed as part of a school project using React (Vite) (with TypeScript) for the frontend and Node.js (Express) for the backend. I also use MySQL for the database.
 
 The webshop includes core features such as:
 - Product listing
 - Basic shopping cart functionality
-- A user-friendly UI built with React
+- A user-friendly UI built with React Bootstrap.
 
 Although the project is not perfect and lacks some advanced features, it was a fun and educational experience that helped me gain a deeper understanding of client-server interaction, API consumption, and frontend state management.`,
-      sourceUrl: "https://github.com/Niklaspelli/WebshopProject/tree/main",
+      sourceUrl: "https://github.com/Niklaspelli/mock-webshop-typescript",
       sourceLabel: "Amazing shirts!",
       showLikeButton: true,
     },
